@@ -1,49 +1,20 @@
-import React from "react";
 import { Carousel } from "react-bootstrap";
 import { Container, ImageWrapper } from "./styles";
-import StarWarsImg1 from "../../assets/starWars1.jpg"
-import StarWarsImg2 from "../../assets/starWars2.jpg"
-import StarWarsImg3 from "../../assets/starWars3.jpg"
+import { reviews } from "./data";
 
 const CarouselImages: React.FC = () => {
   return (
     <Container>
       <Carousel>
-        <Carousel.Item interval={3000}>
-          <ImageWrapper
-            className="d-block w-100"
-            src={StarWarsImg1}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={3000}>
-          <ImageWrapper
-            className="d-block w-100"
-            src={StarWarsImg2}
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={3000}>
-          <ImageWrapper
-            className="d-block w-100"
-            src={StarWarsImg3}
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
+        {reviews.map((review) => (
+          <Carousel.Item key={review.id} interval={3000}>
+            <ImageWrapper src={review.image} className={review.className} alt={review.alt} />
+            <Carousel.Caption>
+              <h3>{review.caption}</h3>
+              <p>{review.description}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
       </Carousel>
     </Container>
   );
