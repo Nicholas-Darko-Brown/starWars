@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap";
 import starWarsLogo from "../../assets/star-wars-logo.png";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header>
       <Navbar bg="light" expand="lg" fixed="top">
