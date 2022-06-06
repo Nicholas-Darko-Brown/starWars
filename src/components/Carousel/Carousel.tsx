@@ -10,8 +10,7 @@ const CarouselImages: React.FC = () => {
           <Carousel.Item key={review.id} interval={3000}>
             <ImageWrapper src={review.image} className={review.className} alt={review.alt} />
             <Carousel.Caption>
-              <h3>{review.caption}</h3>
-              <p>{review.description}</p>
+              <h1>{review.caption}</h1>
             </Carousel.Caption>
           </Carousel.Item>
         ))}

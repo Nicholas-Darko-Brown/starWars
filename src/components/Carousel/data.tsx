@@ -8,7 +8,6 @@ interface CarouselProps {
     image: string;
     alt: string;
     caption: string;
-    description: string;
 }
 
 export const reviews: CarouselProps[] = [
@@ -17,23 +16,20 @@ export const reviews: CarouselProps[] = [
       className:"d-block w-100",
       image: StarWarsImg1,
       alt:"First slide",
-      caption: "First slide label",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      caption: "Slight weapons malfunction",
     },
     {
       id: 2,
       className:"d-block w-100",
       image: StarWarsImg2,
       alt:"Second slide",
-      caption: "Second slide label",
-      description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+      caption: "Rebellions are built on hopes",
     },
     {
       id: 3,
       className:"d-block w-100",
       image: StarWarsImg3,
       alt:"Third slide",
-      caption: "Third slide label",
-      description: "Praesent commodo cursus magna, vel scelerisque nisl consectetur.",
+      caption: "The ability to speak does not make you intelligent.",
     }
   ];
