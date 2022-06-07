@@ -1,9 +1,10 @@
 import React from "react";
-import "./styles"
 import Logo from "../../assets/star-wars-logo.png";
 import { FooterContainer } from "./styles";
+import { useNavigate } from "react-router-dom";
 
-const Footer = () => {
+const Footer: React.FC = () => {
+  const navigate = useNavigate()
 
   const currentYear = new Date().getFullYear();
 
@@ -11,7 +12,9 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div className="footer-logo">
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="" onClick={() => {
+            navigate("/")
+          }} />
       </div>
       <div className="copyright-text">
         <span className="copyright">&copy; copyright {currentYear}  </span>

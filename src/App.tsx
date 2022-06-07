@@ -1,17 +1,25 @@
-
-import CarouselImages from "./components/Carousel/Carousel";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import ListerPage from "./pages/ListerPage/ListerPage";
+import Details from "./pages/ListerPage/Details";
+import Context from "./pages/ListerPage/Context";
 
-
-const App: React.FC = () => {
+const App = () => {
   return (
-    <main className="App">
+    <Context>
+    <Router>
       <Header />
-      <CarouselImages />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/listerPage" element={<ListerPage />} />
+          <Route path="/details" element={<Details />} />
+        </Routes>
       <Footer />
-    </main>
+    </Router>
+    </Context>
   );
-}
+};
 
 export default App;
