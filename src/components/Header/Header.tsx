@@ -14,7 +14,7 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <Navbar bg="light" expand="lg" fixed="top">
+      <Navbar bg="light" expand="lg" fixed="top" className="navbar">
         <Container fluid>
           <Navbar.Brand onClick={() => {
             navigate("/")

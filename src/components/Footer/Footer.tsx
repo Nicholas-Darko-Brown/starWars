@@ -16,6 +16,7 @@ const Footer: React.FC = () => {
             navigate("/")
           }} />
       </div>
+
       <div className="copyright-text">
         <span className="copyright">&copy; copyright {currentYear}  </span>
       </div>
