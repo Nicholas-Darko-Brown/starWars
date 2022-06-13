@@ -16,6 +16,7 @@ const Context = ({ children }) => {
     </DetailContext.Provider>
   );
 };
+
 export const PeopleState = () => {
   return useContext(DetailContext);
 };

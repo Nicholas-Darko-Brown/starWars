@@ -8,19 +8,12 @@ import {
 } from "./styles";
 import ListerCard from "./ListerCard";
 
-const ListerPage: React.FC = () => {
-  const [info, setInfo] = useState<any[]>([]);
-  const [active, setActive] = useState<number>(1);
-  const [isLoading, setLoading] = useState<boolean>(false);
-  const [isError, setError] = useState<boolean>(false);
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let search = info.filter((list) =>
-      list.name.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-
-    setInfo(search);
-  };
+const ListerPage = () => {
+  const [info, setInfo] = useState([]);
+  const [active, setActive] = useState(1);
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+  const [query, setQuery] = useState("");
 
   let items = [];
   for (let number = 1; number <= 9; number++) {
@@ -43,10 +36,10 @@ const ListerPage: React.FC = () => {
       setLoading(true);
 
       try {
-        const myData = await fetch(
+        const getPeople = await fetch(
           `https://www.swapi.tech/api/people?page=${active}&limit=10`
         );
-        const response = await myData.json();
+        const response = await getPeople.json();
         setInfo(response.results);
       } catch (error) {
         setError(true);
@@ -57,7 +50,7 @@ const ListerPage: React.FC = () => {
   }, [active]);
 
   if (isError) return <ListerPageMessages>Error, try again!</ListerPageMessages>;
-  if (isLoading) return <ListerPageMessages>Loading...</ListerPageMessages>;
+  if (isLoading) return <ListerPageMessages className="spinner-container"><div className="loading-spinner"></div></ListerPageMessages>;
 
   return (
     <ListerPageContainer>
@@ -66,21 +59,31 @@ const ListerPage: React.FC = () => {
         placeholder="Search by name..."
         className="me-2"
         aria-label="Search"
-        onChange={(e) => handleSearch(e)}
+        autoFocus
+        onChange={(e) => setQuery(e.target.value)}
       />
 
       <ListerPageCard>
-        {info.map((item) => (
-          <ListerCard item={item} />
-        ))}
+        {info
+          .filter((item) => {
+            if (query === "") return item;
+            
+            if (item.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())) return item;
+            
+            return false
+          })
+          .map((item) => (
+            <ListerCard key={item?.uid} item={item} />
+          ))}
       </ListerPageCard>
+
       <Pagination
         size="sm"
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          margin: "25px auto 40px auto"
+          margin: "25px auto 40px auto",
         }}
       >
         {items}

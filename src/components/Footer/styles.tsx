@@ -12,5 +12,5 @@ export const FooterContainer = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  /* z-index: 9; */
+  z-index: 9;
 `;
